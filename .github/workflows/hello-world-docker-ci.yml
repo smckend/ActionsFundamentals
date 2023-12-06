@@ -1,0 +1,25 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+    paths: 
+      - hello-world-docker-action/**
+  workflow_dispatch:
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+
+      - name: Run my own container action
+        id: hello
+        uses: ./hello-world-docker-action
+        with:
+          who-to-greet: 'Sam'
+
+      - name: Output time set in the container
+        run: echo "Time: ${{ steps.hello.outputs.time }}"
