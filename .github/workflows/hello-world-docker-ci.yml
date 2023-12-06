@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v3
 
       - name: Run my own container action
         id: hello
@@ -22,4 +22,4 @@ jobs:
           who-to-greet: 'Sam'
 
       - name: Output time set in the container
-        run: echo "Time: ${{ steps.hello.outputs.time }}"
+        run: echo "The time when greated = ${{ steps.hello.outputs.time }}"
